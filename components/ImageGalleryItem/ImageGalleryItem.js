@@ -11,13 +11,11 @@ function ImageGalleryItem(props) {
 
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
-    document.body.style.overflow = "";
   };
 
   const openModal = () => {
     setIsModalOpen(true);
     setData(data);
-    document.body.style.overflow = "hidden";
   };
   useEffect(() => {
     if (isModalOpen) {
@@ -26,7 +24,7 @@ function ImageGalleryItem(props) {
     return () => {
       document.body.style.overflow = "";
     };
-  });
+  }, [isModalOpen]);
   return (
     <li key={id} className={style.item}>
       <Image
