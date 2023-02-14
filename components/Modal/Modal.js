@@ -3,31 +3,23 @@ import ClientOnlyPortal from "../../services/ClientOnlyPortal";
 import style from "./modal.module.scss";
 
 function Modal(props) {
-  // useEffect(() => {
-  //   window.addEventListener("keydown", onKeyDown);
-  // });
   const onBackdrop = (e) => {
     if (e.currentTarget === e.target) {
       props.onClose();
     }
   };
+  useEffect(() => {
+    const handleEscapeKey = (e) => {
+      if (e.code === "Escape") {
+        props.onClose();
+        console.log("modal15 esc", e.code);
+        console.log("modal16 props", props);
+      }
+    };
+    document.addEventListener("keydown", handleEscapeKey);
+    return () => document.removeEventListener("keydown", handleEscapeKey);
+  }, []);
 
-  // useEffect(() => {
-  //   const handleEscapeKey = (e) => {
-  //     if (e.code === "Escape") {
-  //       props.onClose();
-  //     }
-  //   };
-  // document.addEventListener("keydown", handleEscapeKey);
-  // return () => document.removeEventListener("keydown", handleEscapeKey);
-  // });
-  const onKeyDown = (e) => {
-    if (e.code === "Escape") {
-      props.onClose();
-    }
-  };
-
-  useEffect(() => {});
   return (
     <>
       {props.isModalOpen && (
@@ -35,9 +27,9 @@ function Modal(props) {
           <div className={style.overlay} onClick={onBackdrop}>
             <div className={style.modal}>
               {props.children}
-              {/* <button type="button" onClick={() => props.onClose()}>
+              <button type="button" onClick={() => props.onClose()}>
                 x
-              </button> */}
+              </button>
             </div>
           </div>
         </ClientOnlyPortal>

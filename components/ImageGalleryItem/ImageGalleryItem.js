@@ -9,6 +9,7 @@ function ImageGalleryItem(props) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { id, url, tags, urlLargeImg } = props;
 
+  console.log("ImageGalleryItem21 props:", props);
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
   };
@@ -21,9 +22,7 @@ function ImageGalleryItem(props) {
     if (isModalOpen) {
       document.body.style.overflow = "hidden";
     }
-    return () => {
-      document.body.style.overflow = "";
-    };
+    return () => (document.body.style.overflow = "");
   }, [isModalOpen]);
   return (
     <li key={id} className={style.item}>

@@ -27,7 +27,7 @@ const Photos = ({ gallery }) => {
       </Head>
       <Heading text="Our Photos" />
       <ImageGallery gallery={gallery} />
-      <Modal />
+      {/* <Modal /> */}
     </>
   );
 };
