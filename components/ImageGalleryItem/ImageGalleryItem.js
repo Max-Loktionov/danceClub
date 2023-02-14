@@ -9,7 +9,6 @@ function ImageGalleryItem(props) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { id, url, tags, urlLargeImg } = props;
 
-  console.log("ImageGalleryItem21 props:", props);
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
   };

@@ -3,7 +3,8 @@ import Link from "next/link";
 import Heading from "../../components/Heading";
 
 export const getStaticProps = async () => {
-  const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+  const URL = process.env.URL_JSON_POSTS;
+  const response = await fetch(URL);
   const data = await response.json();
 
   if (!data) {

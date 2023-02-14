@@ -12,8 +12,6 @@ function Modal(props) {
     const handleEscapeKey = (e) => {
       if (e.code === "Escape") {
         props.onClose();
-        console.log("modal15 esc", e.code);
-        console.log("modal16 props", props);
       }
     };
     document.addEventListener("keydown", handleEscapeKey);

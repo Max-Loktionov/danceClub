@@ -3,7 +3,8 @@ import Link from "next/link";
 import Heading from "../../components/Heading";
 
 export const getStaticProps = async () => {
-  const response = await fetch("https://jsonplaceholder.typicode.com/users");
+  const URL = process.env.URL_JSON_USERS;
+  const response = await fetch(URL);
   const dancers = await response.json();
 
   if (!dancers) {
@@ -23,7 +24,7 @@ const Dancers = ({ dancers }) => {
       <Head>
         <title>Dancers</title>
       </Head>
-      <Heading text="Contacts list:" />
+      <Heading text="Users list:" />
 
       <ul>
         {dancers &&
